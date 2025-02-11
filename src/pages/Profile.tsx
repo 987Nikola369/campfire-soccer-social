@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAuthStore } from '../store/auth';
 import { usePostsStore } from '../store/posts';
@@ -25,7 +26,7 @@ export const Profile: React.FC = () => {
   }, [loggedInUser]);
 
   if (!loggedInUser) {
-    return <p>Loading...</p>; // Or redirect to login
+    return <p>Loading...</p>;
   }
 
   const userPosts = posts.filter(post => post.userId === loggedInUser.id);
@@ -67,9 +68,7 @@ export const Profile: React.FC = () => {
   };
 
   return (
-    <motion.div
-      className="p-4"
-    >
+    <motion.div className="p-4">
       <motion.div
         className="relative rounded-tl-2xl rounded-br-2xl"
         initial={{ opacity: 0, y: -20 }}
@@ -82,7 +81,7 @@ export const Profile: React.FC = () => {
           alt="Cover Photo"
           className="w-full h-48 object-cover"
         />
-        <div className="absolute inset-x-0 bottom-0 h-5/6 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div className="absolute inset-x-0 bottom-0 h-5/6 bg-gradient-to-t from-black/80 to-transparent" />
         <motion.button
           type="button"
           className="absolute bottom-2 right-2 bg-[#E41E12] text-white rounded-full p-2 hover:bg-[#E41E12]/80 transition-colors"
@@ -139,7 +138,7 @@ export const Profile: React.FC = () => {
           userPosts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))
-        }
+        )}
       </div>
     </motion.div>
   );

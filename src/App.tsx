@@ -1,18 +1,19 @@
+
 import React, { useEffect } from 'react';
 import { TopNavigation, BottomNavigation } from './components/layout/Navigation';
 import { useAuthStore } from './store/auth';
 import { usePostsStore } from './store/posts';
 import { Home } from './pages/Home';
 import { Academy } from './pages/Academy';
-import Leaderboard from './components/Leaderboard'; // Ensure correct import
+import Leaderboard from './components/Leaderboard';
 import { Messages } from './pages/Messages';
 import { Profile } from './pages/Profile';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Landing } from './components/landing';
 
 function App() {
   const { user } = useAuthStore();
-  const { posts } = usePostsStore(); // Access posts to ensure PostsStore is initialized
+  const { posts } = usePostsStore();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,21 +29,19 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-accent text-white">
-        <TopNavigation />
-        <main className="max-w-2xl mx-auto px-4 py-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/academy" element={<Academy />} />
-            <Route path="/directory" element={<Leaderboard />} /> {/* Ensure correct path */}
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </main>
-        <BottomNavigation />
-      </div>
-    </BrowserRouter>
+    <div className="min-h-screen bg-accent text-white">
+      <TopNavigation />
+      <main className="max-w-2xl mx-auto px-4 py-16">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/academy" element={<Academy />} />
+          <Route path="/directory" element={<Leaderboard />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </main>
+      <BottomNavigation />
+    </div>
   );
 }
 
